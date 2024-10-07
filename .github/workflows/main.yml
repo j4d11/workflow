@@ -1,0 +1,40 @@
+name: Workflow com falha de dependências
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  job1:
+    name: Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Passo 1
+        run: echo "Passo 1"
+
+      - name: Passo 2
+        run: echo "Passo 2"
+
+      - name: Passo 3
+        run: echo "Passo 3"
+
+  job2:
+    name: Job 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Passo 4
+        run: echo "Passo 1"
+
+      - name: Passo 5
+        run: echo "Passo 2"
+
+      - name: Passo Falho
+        run: echo "Passo falho" | exit 1
